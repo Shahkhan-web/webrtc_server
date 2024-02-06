@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Video Feed</title>
+</head>
+<body>
+    
+    <script>
+        const ws = new WebSocket('ws://localhost:2700/video_feed');
+        ws.addEventListener('message', event => {
+            console.log(event.data);
+        });
+        var img = new Image();
+        img.src = "{{ url_for('video_feed') }}";
+        document.body.appendChild(img);
+    </script> 
+</body>
+</html>
